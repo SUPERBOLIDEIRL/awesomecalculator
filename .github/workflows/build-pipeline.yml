@@ -6,10 +6,12 @@ on:
     branches:
       - master
       - main
+      - artifact-test
   pull_request:
     branches:
       - master
       - main
+      - artifact-test
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -48,4 +50,15 @@ jobs:
         name: awesome-calculator
         path: src/dist    
 
+  install_package:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download package artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: awesome-calculator
+      - name: Install the package
+        run: |
+          pip install src/dist/*.whl
 
