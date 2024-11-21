@@ -60,5 +60,5 @@ jobs:
           name: awesome-calculator
       - name: Install the package
         run: |
-          pip install src/dist/awesome-calculator/*.whl
+          pip install src/dist/awesome-calculator/dedreira_awesomecalculator-1.0.0-py3-none-any.whl
 
