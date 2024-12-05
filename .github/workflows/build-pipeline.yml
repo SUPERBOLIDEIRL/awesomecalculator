@@ -33,16 +33,19 @@ jobs:
           coverage run -m unittest
           coverage report
           coverage html
-      - name: Archive code coverage html report
-        uses: actions/upload-artifact@v3
-        with:
-          name: code-coverage-report
-          path: src/htmlcov
+      - name: Verify dist files
+        run: |
+          echo "Checking files in dist directory before packaging:"
+          ls -R src/dist
       - name: Run package creation
         run: |
           cd src
           python -m pip install --user --upgrade build
           python -m build
+      - name: Verify dist files after build
+        run: |
+          echo "Checking files in dist directory after build:"
+          ls -R src/dist
       - name: Archive package
         uses: actions/upload-artifact@v3
         with:
