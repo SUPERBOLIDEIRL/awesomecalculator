@@ -48,7 +48,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: awesome-calculator
-        path: src/dist    
+        path: awesomecalculator/src/dist    
 
   install_package:
     runs-on: ubuntu-latest
